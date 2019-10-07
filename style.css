@@ -1,24 +1,46 @@
-.content{
-    margin-top: 10px;
-    margin-bottom: 10px;
-    background-color: lightgray;
-    padding: 20px;
-    width: 100%;
+.display-4 {
+    text-align: center;
+    
+
+
+  
+}
+.card {
+margin-left: 150px;
+margin-right: -150px;
+
+}
+.card-body {
+padding: 50px;
+
+
+}
+.password {
+    margin: auto;
+    font-family: 'Arial', 'Helvetica Neue', 'Helvetica', 'sans-serif';
+    background: white;
+    padding: 50px;
+    padding-bottom: 200px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    border: 2px dotted lightgray; 
+    
 }
 
-#display{
-    width: 100%;
-}
 
-#slider{
-    width: 100%;
-}
+.btn-primary {
+    background-color: red;
+    border-color: red;
+    float: left;
+    border-radius: 200px;
+   width: 250px;
 
-#length{
-    display: inline-block;
-    width: 100px;
 }
+.btn-secondary {
+background-color: lightgrey;
+border-color: lightgrey;
+float:right;
+border-radius: 200px;
+width: 250px;
 
-.previous_passwords{
-    margin-bottom: 20px;
 }
