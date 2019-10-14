@@ -1,154 +1,86 @@
-/*alert messages
-alert ("Input following password criteria");
-alert ("Length (must be between 8 and 128 characters)");
-alert ("input Special characters");
-alert ("input Numeric characters");
-alert ("input Lowercase characters");
-alert ("input Uppercase characters");
 
-
-
-
-
-// function generatePassword(passwordLength) {
-//     var numberChars = "0123456789";
-//     var upperChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-//     var lowerChars = "abcdefghijklmnopqrstuvwxyz";
-//     var allChars = numberChars + upperChars + lowerChars;
-//     var randPasswordArray = Array(passwordLength);
-//     randPasswordArray[0] = numberChars;
-//     randPasswordArray[1] = upperChars;
-//     randPasswordArray[2] = lowerChars;
-//     randPasswordArray = randPasswordArray.fill(allChars, 3);
-//     return shuffleArray(randPasswordArray.map(function(x) { return x[Math.floor(Math.random() * x.length)] })).join('');
-//   }
+function getRandomPassword() {
+    var bigArray = [];
+    var passwordPrompt = prompt("Please choose a number between 8 and 128 to determine the amount of characters in your password");
+    var numberOfTimes = parseInt(passwordPrompt);
+    if (numberOfTimes < 8 || numberOfTimes > 128) {
+      alert("Please choose a number between 8 and 128")
   
-// function shuffleArray(array) {
-// for (var i = array.length - 1; i > 0; i--) {
-//     var j = Math.floor(Math.random() * (i + 1));
-//  var temp = array[i];
-// array[i] = array[j];
-// array[j] = temp;
-//  }
-// return array;
-// }
-
-// document.getElementById("p").value = generatePassword();
-
-// alert(generatePassword(12));
-
-
-
-//generate random password
-var Password = {
- 
-    _pattern : /[a-zA-Z0-9_\-\+\.]/,
-    
-    
-    _getRandomByte : function()
-    {
-      
-      if(window.crypto && window.crypto.getRandomValues) 
-      {
-        var result = new Uint8Array(1);
-        window.crypto.getRandomValues(result);
-        return result[0];
+    }
+    else {
+      var password = "";
+      var specialCharYes = confirm("Would you like special characters in your password?");
+      if (specialCharYes === true) {
+        bigArray.push("@", "%", "+", "\\", "/", "'", "!", "#", "$", "^", "?", ":", ",", ")", "(", "}", "{", "]", "[", "~", "-", "_", ".");
       }
-      else if(window.msCrypto && window.msCrypto.getRandomValues) 
-      {
-        var result = new Uint8Array(1);
-        window.msCrypto.getRandomValues(result);
-        return result[0];
+      var numCharYes = confirm("Would you like numbers in your password?");
+      if (numCharYes === true) {
+        bigArray.push("0", "1", "2", "3", "4", "5", "6", "7", "8", "9");
       }
-      else
-      {
-        return Math.floor(Math.random() * 256);
+      var lowerCharYes = confirm("Would you like lower case letters in your password?");
+      if (lowerCharYes === true) {
+        bigArray.push("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z");
       }
-    },
-    
-    generate : function(length)
-    {
-      return Array.apply(null, {'length': length})
-        .map(function()
-        {
-          var result;
-          while(true) 
-          {
-            result = String.fromCharCode(this._getRandomByte());
-            if(this._pattern.test(result))
-            {
-              return result;
-            }
-          }        
-        }, this)
-        .join('');  
-    }    
-      
+      var upperCharYes = confirm("Would you like upper case letters in your password?");
+      if (upperCharYes === true) {
+        bigArray.push("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z");
+      }
+  
+      // this is just to see if I have all the items in the bigArray
+      console.log(bigArray);
+  
+  
+  
+      //this generates a password of the length of characters from the available characters
+      for (var i = 0; i < numberOfTimes; i++) {
+        var passwordChar = getRandomChar();
+        password = password + passwordChar;
+  
+      }
+      console.log(password);
+  
+      return password;
+    }
+  
+    function getRandomChar(x) {
+      var randomIndex = Math.floor(Math.random() * bigArray.length);
+      var randomQ = bigArray[randomIndex];
+  
+      return randomQ;
+    }
   }
-
-
-
-//function to copy password to clipboard
-function copyPassword(){
-
-document.getElementById("p").select();
-
-document.execCommand("Copy");
-alert("Password copied to clipboard!");
-
- }
-*/
-
-//User input and variable declaration
-
-
-var passwordLength = prompt("Input password Length (must be between 8 and 128 characters)");
-var specialChars = confirm("Would you like Special characters in your password");
-var numericChars = confirm("Would you like Numeric characters in your password");
-var lowerChars = confirm("Would you like Lowercase characters in your password");
-var upperChars = confirm("Would you like Uppercase characters in your password"); 
-
-
-
-// var inputValue = "ABCDEFGHIJKLMNOPQRSTUVWZYZabcdefghijklmnopqrstuvwxyz1234567890!@#$%^&*()_+";
-
-// var passwordLength = prompt("Input password Length (must be between 8 and 128 characters)");
-var password = function inputChar (passwordLength, specialChars) {
-var letters = /^[0-9a-zA-Z]+$/;
-if(.str.match(letters))
-{
-  alert("Your input accepted");
-//  document.form1.text1.focus();
-//  return true;
-}
-else
-{
-  alert('Please enter valid input');
-//  return false;
-}
-}
-
-console.log inputCheck(5);
-
-
-
-for (var i = 0; i < passwordLength; i++) {
-  var num = Math.random();
-  var char = lowerLetters[num];
-}
-
-
-
-
-/*var pwLength = passwordLength;
-var spChars = "!@#$%^&*()_+/[\w ]+$/";
-var nuChars = 1234567890;
-var loChars = "abcdefghijklmnopqrstuvwxyz";
-var upChars = "ABCDEFGHIJKLMNOPQRSTUVWZYZ";
-
-
-
-  // values are identical
-
-
-    var input =
+  
+  var generatePassword = document.getElementById("generate-password");
+  generatePassword.addEventListener("click", function () {
+    var randomPassword = getRandomPassword();
+    var securePasswordElement = document.getElementById("text");
+    securePasswordElement.innerHTML = randomPassword;
+  });
+  
+  // get the copy to clipboard button
+  var copyToClipboardButton = document.getElementById("copy-to-clipboard");
+  
+  // make the webpage "listen" to when the user clicks the button, and do something in response
+  copyToClipboardButton.addEventListener("click", function () {
+    // this function creates an "input" HTML element and sets its text to the text we want to copy, and then copies from it
+    // (we never actually add it to the screen)
+    
+    // Create the input
+    var copyArea = document.createElement("input");
+  
+    // Set the text of the input
+    var mySecurePasswordElement = document.getElementById("text");
+    var mySecurePasswordText = mySecurePasswordElement.innerHTML;
+    copyArea.value = mySecurePasswordText;
+  
+    // We can add a temporary "input" element to our HTML to enable copying functionality (this doesn't seem to work on a "span" element)
+    document.body.appendChild(copyArea);
+  
+    // this is like selecting all the text in the input box with ctrl+A (or highlighting it all)
+    copyArea.select();
+    // Make the webpage do the actual copy (same as if I pressed ctrl+C on the selected text from above)
+    document.execCommand('copy');
+  
+    // But we have to remember to remove the "input" HTML element, so our page still looks nice and pretty
+    document.body.removeChild(copyArea);
+  });
